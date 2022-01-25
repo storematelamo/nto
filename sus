@@ -1,4 +1,4 @@
-repeat wait(2) until game:IsLoaded()
+repeat wait(.2) until game:IsLoaded()
 
 function say(msg)
 	game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
@@ -213,7 +213,7 @@ end)
 
 local BurnAllBodies = GamepassTab:AddButton("Burn All Bodies", function()
     for next, Body in pairs(Workspace.Bodies:GetChildren()) do
-        ReplicatedStorage.GuardRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+        ReplicatedStorage.FrontmanRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
     end
 end)
 
@@ -312,6 +312,7 @@ local ServerHop = MiscTab:AddButton("ServerHop To A New Lobby!", function()
 			wait(0.25)
 			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
 		end
+    end
 end)
 
 -- Credits Tab
@@ -349,7 +350,7 @@ end
 
 while wait(.3) do
 for next, Body in pairs(Workspace.Bodies:GetChildren()) do
-        ReplicatedStorage.GuardRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+        ReplicatedStorage.FrontmanRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
     end
 end
 

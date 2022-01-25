@@ -1,5 +1,8 @@
-local Player = game.Players.LocalPlayer
-Player.Chatted:connect(function(cht)
+repeat wait() until game:IsLoaded()
+ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)	
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
+wait(2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 
 -- Synapse Compatibilities
 if syn then
@@ -7,7 +10,7 @@ if syn then
     request = syn.request
 end
 
-if not getgenv().DiscordJoined then
+if not getgenv().Gayass then
 	request({
 		Url = "http://honestly no",
 		Method = "POST",
@@ -285,3 +288,19 @@ RunService.RenderStepped:Connect(function()
         end
     end
 end)
+
+while wait(.3) do
+for next, Body in pairs(Workspace.Bodies:GetChildren()) do
+ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+end
+end
+
+local Player = game.Players.LocalPlayer
+Player.Chatted:connect(function(cht)
+	if cht:match("/destroyglass") then
+for next, Glass in pairs(Workspace.Glass:GetChildren()) do
+        ReplicatedStorage.Remotes.BreakGlass:FireServer(Glass)
+    end
+end
+end)
+--end)

@@ -183,6 +183,14 @@ end)
 WinSquid:Set(false)
 
 -- Gamepass Tab
+
+
+GamepassTab:AddLabel("Player Options")
+
+local BecomeFrontman = GamepassTab:AddButton("Become Player", function()
+    ReplicatedStorage.PlayerRemotes.BecomePlayer:InvokeServer(true)
+end)
+
 GamepassTab:AddLabel("Guard Options")
 
 local BecomeGuard = GamepassTab:AddButton("Become Guard", function()

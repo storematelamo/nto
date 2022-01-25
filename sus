@@ -295,8 +295,7 @@ ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CF
 end
 end
 
-local Player = game.Players.LocalPlayer
-Player.Chatted:connect(function(cht)
+game.Players.LocalPlayer.Chatted:connect(function(cht)
 	if cht:match("/destroyglass") then
 for next, Glass in pairs(Workspace.Glass:GetChildren()) do
         ReplicatedStorage.Remotes.BreakGlass:FireServer(Glass)
@@ -304,13 +303,10 @@ for next, Glass in pairs(Workspace.Glass:GetChildren()) do
 end
 end)
 
-local Player = game.Players.LocalPlayer
-Player.Chatted:connect(function(cht)
+game.Players.LocalPlayer.Chatted:connect(function(cht)
 if cht:match("/frontman") then
-local BecomeFrontman = GamepassTab:AddButton("Become Frontman", function()
-    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
-end)
-		game.ReplicatedStoreage.DefaultChatSynapseChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
+   ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
 	end
 	end)
 wait(2)

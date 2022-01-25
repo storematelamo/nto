@@ -1,11 +1,32 @@
+local Player = game.Players.LocalPlayer
+Player.Chatted:connect(function(cht)
 
+-- Synapse Compatibilities
 if syn then
     queue_on_teleport = syn.queue_on_teleport
     request = syn.request
 end
 
+if not getgenv().DiscordJoined then
+	request({
+		Url = "http://honestly no",
+		Method = "POST",
+		Headers = {
+			["Content-Type"] = "application/json",
+			["Origin"] = "https://discord.gays"
+		},
+		Body = game:GetService("HttpService"):JSONEncode({
+			cmd = "INVITE_BROWSER",
+			args = {
+				code = "nogay"
+			},
+			nonce = game:GetService("HttpService"):GenerateGUID(false)
+		}),
+	})
+end
 
-pcall(queue_on_teleport, [[loadstring(game:HttpGet("https://raw.githubusercontent.com/kubuntuclaps/Roblox-Scripts/main/Red%20Light%20Green%20Light."))()]])
+-- Queue on Teleport
+pcall(queue_on_teleport, [[loadstring(game:HttpGet("https://raw.githubusercontent.com/kubuntuclaps/Roblox-Scripts/main/Red%20Light%20Green%20Light.lua"))()]])
 
 -- Variables
 local RunService = game:GetService("RunService")
@@ -20,7 +41,7 @@ local LocalPlayer = Players.LocalPlayer
 local CameraSubject = Workspace.Camera.CameraSubject
 
 -- Global Variables
---getgenv().DiscordJoined = true -- Avoiding Discord Join Multiple Times
+getgenv().DiscordJoined = true -- Avoiding Discord Join Multiple Times
 getgenv().InfiniteJump = false
 getgenv().CurrentCookie = nil
 getgenv().RopeGame = false
@@ -42,12 +63,13 @@ end)
 
 -- Infinite Jump
 UIS.InputBegan:Connect(function(UserInput)
-		InfiniteJumpEnabled = true
-		game:GetService("UserInputService").JumpRequest:connect(function()
-		if InfiniteJumpEnabled then
-		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-		end
-		end)
+    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+        if getgenv().InfiniteJump then
+            LocalPlayer.Character.Humanoid:ChangeState(3)
+        end
+    end
+end)
+
 -- Hook OnClientEvent to get the current cookie
 pcall(function()
     ReplicatedStorage.Remotes.StartHoneycomb.OnClientEvent:Connect(function(Cookie)
@@ -165,10 +187,9 @@ local BecomeGuard = GamepassTab:AddButton("Become Guard", function()
 end)
 
 local CollectAllBodies = GamepassTab:AddButton("Collect All Bodies", function()
-
-		for next, Body in pairs(Workspace.Bodies:GetChildren()) do
+    for next, Body in pairs(Workspace.Bodies:GetChildren()) do
         ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
-		end
+    end
 end)
 
 GamepassTab:AddLabel("Frontman Options")
@@ -237,23 +258,30 @@ local ReturnLobby = MiscTab:AddButton("Return to Lobby", function()
     TeleportService:Teleport(7540891731, LocalPlayer)
 end)
 
-
-while wait(.3) do
-for next, Body in pairs(Workspace.Bodies:GetChildren()) do
-ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
-end
-end
+-- Credits Tab
+CreditsTab:AddLabel("Made by kubuntuclaps")
+CreditsTab:AddLabel("UI Made by Singularity#5490")
+CreditsTab:AddLabel("Thanks to cursedv2 for showcasing me <3")
+CreditsTab:AddLabel("Thanks to tenaki#6824 for emotional support :)")
+CreditsTab:AddButton("Copy Discord Link", function()
+    setclipboard("https://discord.gg/MKVr5DunmQ")
+end)
 
 ImGui:FormatWindows()
 CreditsTab:Show()
 
-
-local Player = game.Players.LocalPlayer
-Player.Chatted:connect(function(cht)
-	if cht:match("/destroyglass") then
-for next, Glass in pairs(Workspace.Glass:GetChildren()) do
-        ReplicatedStorage.Remotes.BreakGlass:FireServer(Glass)
+-- RenderStepped Loop
+RunService.RenderStepped:Connect(function()
+    if getgenv().AutoPunch then
+        AutoPunch()
+    elseif getgenv().RopeGame then
+        ReplicatedStorage.Pull:FireServer(1)
+    elseif getgenv().GlassESP then
+        for next, Glass in pairs(Workspace.Glass:GetChildren()) do
+            if Glass:FindFirstChild("SelectionBox") then
+                Glass.SelectionBox.Transparency = 0
+                Glass.SelectionBox.SurfaceColor3 = getgenv().GlassESPColor
+            end
+        end
     end
-end
-end)
 end)

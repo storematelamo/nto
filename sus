@@ -1,5 +1,9 @@
 repeat wait(2) until game:IsLoaded()
 
+function say(msg)
+	game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
+end
+
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 
 -- Synapse Compatibilities
@@ -271,8 +275,43 @@ local Team2 = ChangeTeam:Add("4")
 
 MiscTab:AddLabel("Teleport Options")
 
-local ReturnLobby = MiscTab:AddButton("Return to Lobby", function()
+local ReturnLobby = MiscTab:AddButton("Return to Lobby!", function()
     TeleportService:Teleport(7540891731, LocalPlayer)
+end)
+
+local Rejoin = MiscTab:AddButton("Rejoin the LOBBY!", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end)
+
+local ServerHop = MiscTab:AddButton("ServerHop To A New Lobby!", function()
+    say("Serverhop Toggled, please wait... -Abilities-")
+	    logn("SereverHopping Toggled!")
+		local x = {}
+		for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+			if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+				x[#x + 1] = v.id
+				amount = v.playing
+			end
+		end
+		if #x > 0 then
+			say("Joining, Detected "..amount.." Player(s) in server!")
+			wait(0.25)
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
+		else
+			    say("Serverhop ReToggled, please wait... -Abilities-")
+	    logn("SereverHopping Toggled!")
+		local x = {}
+		for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+			if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+				x[#x + 1] = v.id
+				amount = v.playing
+			end
+		end
+		if #x > 0 then
+			say("Joining, Detected "..amount.." Player(s) in server!")
+			wait(0.25)
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
+		end
 end)
 
 -- Credits Tab
@@ -305,6 +344,13 @@ while wait(.3) do
 for next, Body in pairs(Workspace.Bodies:GetChildren()) do
 ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
 end
+end
+
+
+while wait(.3) do
+for next, Body in pairs(Workspace.Bodies:GetChildren()) do
+        ReplicatedStorage.GuardRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+    end
 end
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)

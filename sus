@@ -276,12 +276,10 @@ local ReturnLobby = MiscTab:AddButton("Return to Lobby", function()
 end)
 
 -- Credits Tab
-CreditsTab:AddLabel("Made by kubuntuclaps")
-CreditsTab:AddLabel("UI Made by Singularity#5490")
-CreditsTab:AddLabel("Thanks to cursedv2 for showcasing me <3")
-CreditsTab:AddLabel("Thanks to tenaki#6824 for emotional support :)")
-CreditsTab:AddButton("Copy Discord Link", function()
-    setclipboard("https://discord.gg/MKVr5DunmQ")
+CreditsTab:AddLabel("Made by crum")
+CreditsTab:AddLabel("enjoy nerds")
+CreditsTab:AddButton("Queue (At Spawn)", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 end)
 
 ImGui:FormatWindows()

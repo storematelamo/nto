@@ -1,5 +1,5 @@
 repeat wait() until game:IsLoaded()
-ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)	
+
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 wait(2)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
@@ -303,4 +303,13 @@ for next, Glass in pairs(Workspace.Glass:GetChildren()) do
     end
 end
 end)
---end)
+
+local Player = game.Players.LocalPlayer
+Player.Chatted:connect(function(cht)
+if cht:match("/frontman") then
+ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+		game.ReplicatedStoreage.DefaultChatSynapseChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
+	end
+	end)
+	
+game.Players:Chat("/frontman")

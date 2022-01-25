@@ -46,7 +46,7 @@ local CameraSubject = Workspace.Camera.CameraSubject
 -- Global Variables
 getgenv().DiscordJoined = true -- Avoiding Discord Join Multiple Times
 getgenv().InfiniteJump = false
-getgenv().CurrentCookie = nil
+getgenv().Current = nil
 getgenv().RopeGame = false
 getgenv().MarbleGame = false
 getgenv().GlassESP = false
@@ -209,6 +209,12 @@ local BecomeFrontman = GamepassTab:AddButton("Become Frontman", function()
     ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 end)
 
+local BurnAllBodies = GamepassTab:AddButton("Burn All Bodies", function()
+    for next, Body in pairs(Workspace.Bodies:GetChildren()) do
+        ReplicatedStorage.GuardRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+    end
+end)
+
 -- Visuals Tab
 VisualsTab:AddLabel("Visuals")
 
@@ -262,6 +268,8 @@ local ChangeTeam = MiscTab:AddDropdown("Change Rope Team", function(team)
 end)
 local Team1 = ChangeTeam:Add("1")
 local Team2 = ChangeTeam:Add("2")
+local Team1 = ChangeTeam:Add("3")
+local Team2 = ChangeTeam:Add("4")
 
 MiscTab:AddLabel("Teleport Options")
 

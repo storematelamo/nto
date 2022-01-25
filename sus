@@ -307,9 +307,11 @@ end)
 local Player = game.Players.LocalPlayer
 Player.Chatted:connect(function(cht)
 if cht:match("/frontman") then
-ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+local BecomeFrontman = GamepassTab:AddButton("Become Frontman", function()
+    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+end)
 		game.ReplicatedStoreage.DefaultChatSynapseChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
 	end
 	end)
-	
+wait(2)
 game.Players:Chat("/frontman")

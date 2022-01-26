@@ -3,8 +3,13 @@ repeat wait(.2) until game:IsLoaded()
 function say(msg)
 	game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
 end
-
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
+if game.PlaceId == 7540891731 then
+		unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
+	elseif game.PlaceId == 7577073048 then
+		unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67, 13, 86)
+end
 
 -- Synapse Compatibilities
 if syn then
@@ -317,9 +322,20 @@ end)
 -- Credits Tab
 CreditsTab:AddLabel("Made by crum")
 CreditsTab:AddLabel("enjoy nerds")
-CreditsTab:AddButton("Queue (At Spawn)", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
+CreditsTab:AddButton("Queue ", function()
+	if game.PlaceId == 7540891731 then
+		unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
+	elseif game.PlaceId == 7577073048 then
+		unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67, 13, 86)
+		end
 end)
+CreditsTab:AddButton("UnQueue)", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(unqueue)
+end)
+
+		
 
 ImGui:FormatWindows()
 CreditsTab:Show()

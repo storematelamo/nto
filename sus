@@ -65,7 +65,7 @@ getgenv().Current = nil
 getgenv().RopeGame = false
 getgenv().MarbleGame = false
 getgenv().GlassESP = false
-getgenv().GlassESPColor = Color3.fromRGB(0, 255,f 0)
+getgenv().GlassESPColor = Color3.fromRGB(0, 255, 0)
 getgenv().AutoPunch = false
 
 -- Metamethod Hook for WalkSpeed and JumpHeight

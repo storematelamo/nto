@@ -28,7 +28,7 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 		wait(5)
 		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Gaming Has Been Enabled boii!","all")
 		elseif cht:match("/speed") then
-		while wait(.01) do/
+		while wait(.01) do
 		game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 50
 		end
 		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Speed Has Been Enabled!","all")

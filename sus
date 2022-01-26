@@ -521,6 +521,11 @@ for next, Glass in pairs(Workspace.Glass:GetChildren()) do
 elseif cht:match("/frontman") then
    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
+
+elseif cht:match("/fly") or cht:match("/opengui") then
+loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
+elseif cht:match("/iy") then
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 	end
 	end)
 wait(2)

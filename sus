@@ -467,7 +467,6 @@ end)
 CreditsTab:AddButton("Mass-Queue ", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 end)
-end
 --CreditsTab:AddButton("UnQueue)", function()
 --    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(unqueue)
 --end)

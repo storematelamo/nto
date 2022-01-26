@@ -444,6 +444,10 @@ end
 end
 
 
+while wait(.5) do 
+ReplicatedStorage.Remotes.ReachedGoal:FireServer(Workspace.Mechanics.GoalPart1)
+end
+
 while wait(.3) do
 for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
         ReplicatedStorage.FrontmanRemotes.BurnCoffins:FireServer(Workspace.Coffins.Coffin)
@@ -451,14 +455,8 @@ for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
 end
 
 while wait(.3) do
-ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
 end
-
-while wait(.5) do 
-ReplicatedStorage.Remotes.ReachedGoal:FireServer(Workspace.Mechanics.GoalPart1)
-end
-
-
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)
 	if cht:match("/destroyglass") then

@@ -455,8 +455,9 @@ for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
 end
 
 while wait(.3) do
-ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer(Players.CookieIsPublixXRip.PlayerGui.FrontmanUI.RLGL.ChangeController)
 end
+
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)
 	if cht:match("/destroyglass") then

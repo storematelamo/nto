@@ -346,7 +346,7 @@ end)
 		
 
 ImGui:FormatWindows()
-GamePassTab:Show()
+GamepassTab:Show()
 
 -- RenderStepped Loop
 RunService.RenderStepped:Connect(function()

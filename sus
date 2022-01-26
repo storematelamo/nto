@@ -213,7 +213,7 @@ end)
 
 local BurnAllBodies = GamepassTab:AddButton("Burn All Bodies", function()
     for next, Body in pairs(Workspace.Bodies:GetChildren()) do
-        ReplicatedStorage.FrontmanRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+        ReplicatedStorage.FrontmanRemotes.BurnCoffin:FireServer(Coffins)
     end
 end)
 
@@ -340,6 +340,8 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
+--[[
+
 while wait(.3) do
 for next, Body in pairs(Workspace.Bodies:GetChildren()) do
 ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
@@ -352,6 +354,8 @@ for next, Body in pairs(Workspace.Bodies:GetChildren()) do
         ReplicatedStorage.FrontmanRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
     end
 end
+
+]]
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)
 	if cht:match("/destroyglass") then

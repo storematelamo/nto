@@ -10,7 +10,15 @@ if game.PlaceId == 7540891731 then
 		--unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 		--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67, 13, 86)
 end
+--[[
 
+if game.PlaceId == 7577073048 then
+while wait() do
+ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+end
+end
+
+]]
 -- Synapse Compatibilities
 if syn then
     queue_on_teleport = syn.queue_on_teleport
@@ -57,7 +65,7 @@ getgenv().Current = nil
 getgenv().RopeGame = false
 getgenv().MarbleGame = false
 getgenv().GlassESP = false
-getgenv().GlassESPColor = Color3.fromRGB(0, 255, 0)
+getgenv().GlassESPColor = Color3.fromRGB(0, 255,f 0)
 getgenv().AutoPunch = false
 
 -- Metamethod Hook for WalkSpeed and JumpHeight
@@ -338,7 +346,7 @@ end)
 		
 
 ImGui:FormatWindows()
-CreditsTab:Show()
+GamePassTab:Show()
 
 -- RenderStepped Loop
 RunService.RenderStepped:Connect(function()

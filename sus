@@ -122,6 +122,8 @@ local Settings = {
 }
 local Window = ImGui:AddWindow("kubuntuhaxs™ - Red Light, Green Light", Settings)
 local PlayerTab = Window:AddTab("LocalPlayer")
+local TeleportsTab1 = Window:AddTab("Teleports")
+local TeleportsTab2 = Window:AddTab("Teleports")
 local AutoWinTab = Window:AddTab("Auto Win")
 local GamepassTab = Window:AddTab("Gamepass")
 local VisualsTab = Window:AddTab("Visuals")
@@ -151,8 +153,76 @@ local InfiniteJump = PlayerTab:AddSwitch("Infinite Jump", function(toggle)
     getgenv().InfiniteJump = toggle
 end)
 InfiniteJump:Set(false)
+-- Teleports Tab
+TeleportsTab1:AddLabel("Lobby Teleports")
+TeleportsTab1:AddButton("Queue (For Lobby)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
+end)
+TeleportsTab1:AddButton("Shop (For Lobby)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-636, 3, 274)
+end)
+TeleportsTab1:AddLabel("Game Teleports")
+TeleportsTab1:AddButton("Lobby (Game)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67, 13, 112)
+end)
+TeleportsTab1:AddButton("LobbyDoor (Game)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(68, 13, 77)
+end)
 
--- Auto Win Tab
+TeleportsTab1:AddLabel("First Game (Redlight, Greenlight)")
+TeleportsTab1:AddButton("InDoor (Inside Waiting Room)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-313, 3, 31)
+end)
+TeleportsTab1:AddButton("OutSide (OutSide Waiting Room)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-312, 3, 46)
+end)
+TeleportsTab1:AddButton("End Of Game", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-335, 3, 425)
+end)
+local WinDoll = TeleportsTab1:AddSwitch("End Without Death", function(toggle)
+    ReplicatedStorage.Remotes.ReachedGoal:FireServer(Workspace.Mechanics.GoalPart1)
+    if toggle and tween.PlaybackState ~= Enum.PlaybackState.Playing then
+        tween:Play()
+    elseif not toggle and tween.PlaybackState == Enum.PlaybackState.Playing then
+        tween:Cancel()
+    end
+end)
+TeleportsTab1:AddLabel("Second Game (Cookies)")
+TeleportsTab1:AddButton("Cookies", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-636, 3, 274)
+end)
+TeleportsTab2:AddLabel("Third Game (Tug Of War)")
+TeleportsTab2:AddButton("InDoor (Inside Waiting Room)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-908, 59, -526)
+end)
+TeleportsTab2:AddButton("OutSide (OutSide Waiting Room)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-911, 59, -441)
+end)
+TeleportsTab2:AddButton("Bridge (Tug Of War)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-879, 86, -355)
+end)
+TeleportsTab2:AddLabel("Fourth Game (Marbles)")
+TeleportsTab2:AddButton("Marbles (Fav Game)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-968, 12, 172)
+end)
+TeleportsTab2:AddLabel("Fifth Game (Glass Bridge)")
+--5th game : glass bridge : end of bridge, -501, 78, -480 
+TeleportsTab2:AddButton("Glass Brige (The Beggining)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501, 78, -331)
+end)
+TeleportsTab2:AddButton("Glass Brige (The End)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501, 78, -480)
+end)
+TeleportsTab2:AddButton("Glass Brige (FrontMan/Host Room)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-453, 79, -401)
+end)
+TeleportsTab2:AddLabel("Sixth Game (Squid Game)")
+TeleportsTab2:AddButton("The Winner Circle (Stay Inside For 10 Seconds To Win)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-314, 3, 326)
+end)
+TeleportsTab2:AddButton("The Arena (Fighting Area)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-315, 3, 280)
+end)
 AutoWinTab:AddLabel("Auto Win")
 
 local tweenInfo = TweenInfo.new(13, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0)
@@ -366,7 +436,6 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
---[[
 
 while wait(.3) do
 for next, Body in pairs(Workspace.Bodies:GetChildren()) do
@@ -381,7 +450,15 @@ for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
     end
 end
 
-]]
+while wait(.3) do
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer
+end
+
+while wait(.5) do 
+ReplicatedStorage.Remotes.ReachedGoal:FireServer(Workspace.Mechanics.GoalPart1)
+end
+
+
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)
 	if cht:match("/destroyglass") then

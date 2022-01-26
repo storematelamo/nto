@@ -204,6 +204,8 @@ GamepassTab:AddLabel("Player Options")
 
 local BecomeFrontman = GamepassTab:AddButton("Become Player", function()
     ReplicatedStorage.PlayerRemotes.BecomePlayer:InvokeServer(true)
+    ReplicatedStorage.GuardRemotes.BecomeGuard:InvokeServer(false)
+    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(falseas)
 end)
 
 GamepassTab:AddLabel("Guard Options")
@@ -224,9 +226,9 @@ local BecomeFrontman = GamepassTab:AddButton("Become Frontman", function()
     ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 end)
 
-local BurnAllBodies = GamepassTab:AddButton("Burn All Bodies", function()
-    for next, Body in pairs(Workspace.Bodies:GetChildren()) do
-        ReplicatedStorage.FrontmanRemotes.BurnCoffin:FireServer(Coffins)
+local BurnAllCoffins = GamepassTab:AddButton("Burn All Coffins", function()
+    for next, Coffin in pairs(Workspace.Coffin:GetChildren()) do
+        ReplicatedStorage.FrontmanRemotes.BurnCoffin:FireServer(Workspace.Coffins.Coffin)
     end
 end)
 
@@ -374,8 +376,8 @@ end
 
 
 while wait(.3) do
-for next, Body in pairs(Workspace.Bodies:GetChildren()) do
-        ReplicatedStorage.FrontmanRemotes.BurnBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
+        ReplicatedStorage.FrontmanRemotes.BurnCoffins:FireServer(Workspace.Coffins.Coffin)
     end
 end
 
@@ -386,11 +388,7 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 for next, Glass in pairs(Workspace.Glass:GetChildren()) do
         ReplicatedStorage.Remotes.BreakGlass:FireServer(Glass)
     end
-end
-end)
-
-game.Players.LocalPlayer.Chatted:connect(function(cht)
-if cht:match("/frontman") then
+elseif cht:match("/frontman") then
    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
 	end

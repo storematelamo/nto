@@ -341,7 +341,19 @@ for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
     end
 end
 end)
+GamepassTab:AddLabel("Revive For Free")
 
+local BecomeFrontman = GamepassTab:AddButton("Free Revive (If you were frontman press me)", function()
+    ReplicatedStorage.GuardRemotes.BecomeGuard:InvokeServer(true)
+end)
+
+local BecomeFrontman = GamepassTab:AddButton("Free Revive (If you were gaurd press me)", function()
+    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+end)
+
+local BecomeFrontman = GamepassTab:AddButton("Free Revive (If you were Player press me ~ you will become frontman) ", function()
+    ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+end)
 
 -- Visuals Tab
 VisualsTab:AddLabel("Visuals")

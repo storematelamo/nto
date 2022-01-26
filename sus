@@ -113,7 +113,7 @@ local function AutoPunch()
 end
 
 -- ImGui Settings
-local ImGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/kubuntuclaps/Roblox-Scripts/main/UI/ImGui.lua"))()
+local ImGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/storematelamo/gay-gui/main/super%20gay%20gui"))()
 local Settings = {
     main_color = Color3.fromRGB(0, 0, 0),
     min_size = Vector2.new(600, 400),

@@ -113,20 +113,22 @@ local function AutoPunch()
 end
 
 -- ImGui Settings
-local ImGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/storematelamo/gay-gui/main/super%20gay%20gui"))()
+local ImGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/kubuntuclaps/Roblox-Scripts/main/UI/ImGui.lua"))()
 local Settings = {
     main_color = Color3.fromRGB(0, 0, 0),
-    min_size = Vector2.new(600, 400),
+    min_size = Vector2.new(760, 710),
     toggle_key = Enum.KeyCode.RightShift,
     can_resize = true,
+
 }
+
 local Window = ImGui:AddWindow("kubuntuhaxs™ - Red Light, Green Light", Settings)
 local PlayerTab = Window:AddTab("LocalPlayer")
 local TeleportsTab1 = Window:AddTab("Teleports")
-local TeleportsTab2 = Window:AddTab("Teleports")
 local AutoWinTab = Window:AddTab("Auto Win")
 local GamepassTab = Window:AddTab("Gamepass")
 local VisualsTab = Window:AddTab("Visuals")
+local SideScriptsTab = Window:AddTab("SideScripts")
 local MiscTab = Window:AddTab("Misc")
 local CreditsTab = Window:AddTab("Credits")
 
@@ -152,6 +154,28 @@ JumpSlider:Set(1)
 local InfiniteJump = PlayerTab:AddSwitch("Infinite Jump", function(toggle)
     getgenv().InfiniteJump = toggle
 end)
+SideScriptsTab:AddButton("Flight (Supported By OpenGUi)", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
+end)
+SideScriptsTab:AddButton("infiniteYield (InfiniteyYield)", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+SideScriptsTab:AddButton("Spam Redlight GreenLight (DIY)", function()
+    while wait(.3) do
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer(Players.CookieIsPublixXRip.PlayerGui.FrontmanUI.RLGL.ChangeController)
+end
+end)
+SideScriptsTab:AddButton("Redlight GreenLight (DIY)", function()
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer(Players.CookieIsPublixXRip.PlayerGui.FrontmanUI.RLGL.ChangeController)
+end)
+
+PlayerTab:AddButton("Flight (Supported By OpenGUi)", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
+end)
+
+
 InfiniteJump:Set(false)
 -- Teleports Tab
 TeleportsTab1:AddLabel("Lobby Teleports")
@@ -159,7 +183,7 @@ TeleportsTab1:AddButton("Queue (For Lobby)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 end)
 TeleportsTab1:AddButton("Shop (For Lobby)", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-636, 3, 274)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(36, 11, 403)
 end)
 TeleportsTab1:AddLabel("Game Teleports")
 TeleportsTab1:AddButton("Lobby (Game)", function()
@@ -191,36 +215,36 @@ TeleportsTab1:AddLabel("Second Game (Cookies)")
 TeleportsTab1:AddButton("Cookies", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-636, 3, 274)
 end)
-TeleportsTab2:AddLabel("Third Game (Tug Of War)")
-TeleportsTab2:AddButton("InDoor (Inside Waiting Room)", function()
+TeleportsTab1:AddLabel("Third Game (Tug Of War)")
+TeleportsTab1:AddButton("InDoor (Inside Waiting Room)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-908, 59, -526)
 end)
-TeleportsTab2:AddButton("OutSide (OutSide Waiting Room)", function()
+TeleportsTab1:AddButton("OutSide (OutSide Waiting Room)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-911, 59, -441)
 end)
-TeleportsTab2:AddButton("Bridge (Tug Of War)", function()
+TeleportsTab1:AddButton("Bridge (Tug Of War)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-879, 86, -355)
 end)
-TeleportsTab2:AddLabel("Fourth Game (Marbles)")
-TeleportsTab2:AddButton("Marbles (Fav Game)", function()
+TeleportsTab1:AddLabel("Fourth Game (Marbles)")
+TeleportsTab1:AddButton("Marbles (Fav Game)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-968, 12, 172)
 end)
-TeleportsTab2:AddLabel("Fifth Game (Glass Bridge)")
+TeleportsTab1:AddLabel("Fifth Game (Glass Bridge)")
 --5th game : glass bridge : end of bridge, -501, 78, -480 
-TeleportsTab2:AddButton("Glass Brige (The Beggining)", function()
+TeleportsTab1:AddButton("Glass Brige (The Beggining)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501, 78, -331)
 end)
-TeleportsTab2:AddButton("Glass Brige (The End)", function()
+TeleportsTab1:AddButton("Glass Brige (The End)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501, 78, -480)
 end)
-TeleportsTab2:AddButton("Glass Brige (FrontMan/Host Room)", function()
+TeleportsTab1:AddButton("Glass Brige (FrontMan/Host Room)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-453, 79, -401)
 end)
-TeleportsTab2:AddLabel("Sixth Game (Squid Game)")
-TeleportsTab2:AddButton("The Winner Circle (Stay Inside For 10 Seconds To Win)", function()
+TeleportsTab1:AddLabel("Sixth Game (Squid Game)")
+TeleportsTab1:AddButton("The Winner Circle (Stay Inside For 10 Seconds To Win)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-314, 3, 326)
 end)
-TeleportsTab2:AddButton("The Arena (Fighting Area)", function()
+TeleportsTab1:AddButton("The Arena (Fighting Area)", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-315, 3, 280)
 end)
 AutoWinTab:AddLabel("Auto Win")
@@ -290,6 +314,14 @@ local CollectAllBodies = GamepassTab:AddButton("Collect All Bodies", function()
     end
 end)
 
+local CollectAllBodies = GamepassTab:AddButton("LoopCollect All Bodies", function()
+while wait(.3) do
+for next, Body in pairs(Workspace.Bodies:GetChildren()) do
+ReplicatedStorage.GuardRemotes.CollectBody:FireServer(LocalPlayer, Body.Torso.CFrame, Body.Name)
+end
+end
+end)
+
 GamepassTab:AddLabel("Frontman Options")
 
 local BecomeFrontman = GamepassTab:AddButton("Become Frontman", function()
@@ -301,6 +333,15 @@ local BurnAllCoffins = GamepassTab:AddButton("Burn All Coffins", function()
         ReplicatedStorage.FrontmanRemotes.BurnCoffin:FireServer(Workspace.Coffins.Coffin)
     end
 end)
+
+local BurnAllCoffins = GamepassTab:AddButton("LoopBurn All Coffins", function()
+    while wait(.3) do
+for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
+        ReplicatedStorage.FrontmanRemotes.BurnCoffins:FireServer(Workspace.Coffins.Coffin)
+    end
+end
+end)
+
 
 -- Visuals Tab
 VisualsTab:AddLabel("Visuals")
@@ -455,9 +496,10 @@ for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
 end
 
 while wait(.3) do
+ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
 ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer(Players.CookieIsPublixXRip.PlayerGui.FrontmanUI.RLGL.ChangeController)
-end
 
+end
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)
 	if cht:match("/destroyglass") then

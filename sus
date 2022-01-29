@@ -171,10 +171,19 @@ ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
 ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer(Players.CookieIsPublixXRip.PlayerGui.FrontmanUI.RLGL.ChangeController)
 end)
 
-PlayerTab:AddButton("Flight (Supported By OpenGUi)", function()
+PlayerTab:AddButton("Flight (Supported By OpenGUI)", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
 end)
 
+PlayerTab:AddButton("Fling And InfinityYield (Flight By OpenGUI))", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+
+PlayerTab:AddButton("AutoFarm (Mine))", function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/storematelamo/brofarm/main/autofarm'),true))()
+end)
 
 InfiniteJump:Set(false)
 -- Teleports Tab
@@ -329,14 +338,16 @@ local BecomeFrontman = GamepassTab:AddButton("Become Frontman", function()
 end)
 
 local BurnAllCoffins = GamepassTab:AddButton("Burn All Coffins", function()
-    for next, Coffin in pairs(Workspace.Coffin:GetChildren()) do
+	for i=1,10000 do
+	for next, Coffin in pairs(Workspace.Coffin:GetChildren()) do
         ReplicatedStorage.FrontmanRemotes.BurnCoffin:FireServer(Workspace.Coffins.Coffin)
+    	end
     end
 end)
 
 local BurnAllCoffins = GamepassTab:AddButton("LoopBurn All Coffins", function()
     while wait(.3) do
-for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
+	for next, Coffin in pairs(Workspace.Coffins:GetChildren()) do
         ReplicatedStorage.FrontmanRemotes.BurnCoffins:FireServer(Workspace.Coffins.Coffin)
     end
 end
@@ -522,14 +533,8 @@ for next, Glass in pairs(Workspace.Glass:GetChildren()) do
         ReplicatedStorage.Remotes.BreakGlass:FireServer(Glass)
     end
 elseif cht:match("/frontman") then
-   ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+ local event = ReplicatedStorage.FrontmanRemotes.BecomeFrontman
+ event:InvokeServer(true)
 game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
-
-elseif cht:match("/fly") or cht:match("/opengui") then
-loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
-elseif cht:match("/iy") then
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 	end
 	end)
-wait(2)
-game.Players:Chat("/frontman")

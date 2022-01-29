@@ -57,6 +57,11 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 	
 	elseif cht:match("/iy") then
 	loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+	elseif cht:match("/shop") then
+	whereiwasat = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(36, 11, 403)
+	elseif cht:match("/unshop") then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(whereiwasat)
 		end end)
 		
 		

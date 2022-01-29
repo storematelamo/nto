@@ -64,6 +64,7 @@ getgenv().InfiniteJump = false
 getgenv().Current = nil
 getgenv().RopeGame = false
 getgenv().MarbleGame = false
+getgenv().PiggyBang = false
 getgenv().GlassESP = false
 getgenv().GlassESPColor = Color3.fromRGB(0, 255, 0)
 getgenv().AutoPunch = false
@@ -87,7 +88,7 @@ UIS.InputBegan:Connect(function(UserInput)
         end
     end
 end)
-
+--InfiniteJump:Set(false)
 -- Hook OnClientEvent to get the current cookie
 pcall(function()
     ReplicatedStorage.Remotes.StartHoneycomb.OnClientEvent:Connect(function(Cookie)
@@ -185,7 +186,18 @@ PlayerTab:AddButton("AutoFarm (Mine))", function()
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/storematelamo/brofarm/main/autofarm'),true))()
 end)
 
-InfiniteJump:Set(false)
+SideScriptsTab:AddButton("Freeze At PiggyBang", function(toggle)
+whereiwasat = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+wait(.3)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-337, 66, -299)
+game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Anchored = true    
+end)
+
+SideScriptsTab:AddButton("UnFreeze At PiggyBang", function(toggle)
+game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Anchored = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(whereiwasat)
+end)
+
 -- Teleports Tab
 TeleportsTab1:AddLabel("Lobby Teleports")
 TeleportsTab1:AddButton("Queue (For Lobby)", function()

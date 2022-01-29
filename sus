@@ -176,7 +176,7 @@ PlayerTab:AddButton("Flight (Supported By OpenGUI)", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
 end)
 
-PlayerTab:AddButton("Fling And InfinityYield (Flight By OpenGUI))", function()
+SideScriptsTab:AddButton("Fling And InfinityYield (Flight By OpenGUI))", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 end)

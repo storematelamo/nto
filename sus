@@ -189,8 +189,10 @@ end)
 SideScriptsTab:AddButton("Freeze At PiggyBang", function(toggle)
 whereiwasat = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 wait(.3)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-337, 66, -299)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67, 39, 206)
 game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Anchored = true    
+wait(1)
+game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("hi whatcha lookin at","all")
 end)
 
 SideScriptsTab:AddButton("UnFreeze At PiggyBang", function(toggle)

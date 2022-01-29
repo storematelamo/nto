@@ -540,7 +540,7 @@ end
 while wait(.3) do
 ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer()
 ReplicatedStorage.FrontmanRemotes.InputRLGL:FireServer(Players.CookieIsPublixXRip.PlayerGui.FrontmanUI.RLGL.ChangeController)
-
+game:GetService("ReplicatedStorage").FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 end
 
 game.Players.LocalPlayer.Chatted:connect(function(cht)
@@ -549,8 +549,7 @@ for next, Glass in pairs(Workspace.Glass:GetChildren()) do
         ReplicatedStorage.Remotes.BreakGlass:FireServer(Glass)
     end
 elseif cht:match("/frontman") then
- local event = ReplicatedStorage.FrontmanRemotes.BecomeFrontman
- event:InvokeServer(true)
 game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
+game:GetService("ReplicatedStorage").FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 	end
 	end)

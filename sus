@@ -552,5 +552,7 @@ for next, Glass in pairs(Workspace.Glass:GetChildren()) do
 elseif cht:match("/frontman") then
 game.ReplicatedStoreage.DefaultChatSystemChatEvents.SayMessageReqest:FireServer("Switched To FrontMan Role!","all")
 game:GetService("ReplicatedStorage").FrontmanRemotes.BecomeFrontman:InvokeServer(true)
+elseif cht:match("/queue") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 	end
 	end)

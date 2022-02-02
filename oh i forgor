@@ -1,3 +1,4 @@
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Executed In 0.038 Seconds!","all")
 
 if game.PlaceId == 7540891731 then
 		unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.Position

@@ -1,5 +1,5 @@
 repeat wait(.2) until game:IsLoaded()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Executed In 0."...math.random(10,60)..." Seconds!","all")
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Executed In 0."..math.random(10,60).." Seconds!","all")
 
 function say(msg)
 	game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")

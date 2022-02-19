@@ -47,8 +47,11 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 		end)
 	elseif cht:match("/infno") then
 		InfiniteJumpEnabled = false
+	elseif cht:match("/queue") then
+	unqueue = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24, 14, 238)
 	elseif cht:match ("/unqueue") then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(unqueue)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(unqueue)
 	elseif cht:match("/fly") or cht:match("/opengui") then
 	loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
 	

